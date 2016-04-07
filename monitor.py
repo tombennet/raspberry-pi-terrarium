@@ -29,7 +29,7 @@ else:
 	fansocket = 1
 	tempthreshold = 28
 
-	if temperature &gt; tempthreshold:
+	if temperature > tempthreshold:
 		# Activate cooling fans
 		energenie.switch_on(fansocket)
 
