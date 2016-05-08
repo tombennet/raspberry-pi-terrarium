@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 
 # lights-on.py - For Terrarium Controllers using Adafruit
 # DHT sensors, Energenie Pimote sockets, and ThingSpeak.
@@ -6,8 +6,8 @@
 # http://bennet.org/blog/raspberry-pi-terrarium-controller/
 
 # Imports
-from gpiozero import Energenie
+import energenie
 
 # Main lights off
-lights = Energenie(2)
-lights.on()
+lightsocket = 2
+energenie.switch_on(lightsocket)
