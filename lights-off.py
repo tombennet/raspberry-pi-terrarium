@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # lights-off.py - For Terrarium Controllers using Adafruit
 # DHT sensors, Energenie Pimote sockets, and ThingSpeak.
@@ -6,8 +6,8 @@
 # http://bennet.org/blog/raspberry-pi-terrarium-controller/
 
 # Imports
-import energenie
+from gpiozero import Energenie
 
 # Main lights off
 lightsocket = 2
-energenie.switch_off(lightsocket)
+l = Energenie(lightsocket, initial_value=False)

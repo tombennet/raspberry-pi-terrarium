@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # monitor.py - For Terrarium Controllers using Adafruit
 # DHT sensors, Energenie Pimote sockets, and ThingSpeak.
@@ -6,9 +6,8 @@
 # http://bennet.org/blog/raspberry-pi-terrarium-controller/
 
 # Imports
-import RPi.GPIO as GPIO
+from gpiozero import Energenie
 import Adafruit_DHT
-import energenie
 import requests
 
 # Attempt to get a sensor reading. The read_retry method will
@@ -31,11 +30,11 @@ else:
 
 	if temperature > tempthreshold:
 		# Activate cooling fans
-		energenie.switch_on(fansocket)
+		f = Energenie(fansocket, initial_value=True)
 
 	else:
 		# Deactivate cooling fans
-		energenie.switch_off(fansocket)
+		f = Energenie(fansocket, initial_value=False)
 
 	# Send the data to Thingspeak
 	r = requests.post('https://api.thingspeak.com/update.json', data = {'api_key':thingspeak_key, 'field1':temperature, 'field2':humidity})
